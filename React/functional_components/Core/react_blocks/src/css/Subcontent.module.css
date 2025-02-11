@@ -1,0 +1,7 @@
+.sub {
+    height: 200px;
+    width: 220px;
+    background-color: yellow;
+    display: inline-block;
+    margin-right: 10px;
+}

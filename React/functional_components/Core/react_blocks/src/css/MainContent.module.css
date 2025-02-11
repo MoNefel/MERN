@@ -1,0 +1,10 @@
+.main {
+    height: 360px;
+    width: 700px;
+    background-color: #e06666;
+    display: inline-block; 
+    padding: 15px 0 0 15px;
+    vertical-align: top;
+    margin-right: 1px;
+    margin-bottom: 20px;
+}

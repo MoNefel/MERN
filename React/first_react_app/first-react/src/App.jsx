@@ -12,12 +12,12 @@ console.log('Hellooo')
 
   return (
 <div className='w-50 mx-auto'>
-  <Form/>
-{/* <Header/>
+  {/* <Form/> */}
+<Header/>
 <Team/>
 <Player name={"Med Akez"} position={"Forward"} number={55} points={32} />
 <Player name={"Akamensi"} position={"backward"} number={22} points={33} />
-<Bench/> */}
+<Bench/>
 </div>
   )
 }

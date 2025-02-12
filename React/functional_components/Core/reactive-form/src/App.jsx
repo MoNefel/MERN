@@ -16,66 +16,64 @@ function App() {
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFirstName(e.target.value);
-    if(e.target.value.length < 2) {
-      setTitleError("First name needs to be 2 characters or longer!");
-     }else {
-        setTitleError("");
-     }
 
-    setLastName(e.target.value);
-    if(e.target.value.length < 2) {
-      setLastError("Last name needs to be 2 characters or longer!");
-     }else {
-      setLastError("");
-     }
+    // Validate First Name
+    if (firstName.length < 2) {
+      setFirstError('First name needs to be 2 characters or longer!');
+    } else {
+      setFirstError('');
+    }
 
-    setEmail(e.target.value);
-    if(e.target.value.length < 8) {
-      setEmailError("Email needs to be 8 characters or longer!");
-     }else {
-      setEmailError("");
-     }
+    // Validate Last Name
+    if (lastName.length < 2) {
+      setLastError('Last name needs to be 2 characters or longer!');
+    } else {
+      setLastError('');
+    }
 
-    setPassword(e.target.value);
-    if(e.target.value.length < 8) {
-      setPasswordError("Password needs to be 8 characters or longer!");
-     }else {
-      setPasswordError("");
-     }
+    // Validate Email
+    if (email.length < 8) {
+      setEmailError('Email needs to be 8 characters or longer!');
+    } else {
+      setEmailError('');
+    }
 
-    setConfirmPassword(e.target.value);
-    if(e.target.value != password) {
-      setConfirmPasswordError("Confirm Password does not match!");
-     }else {
-      setConfirmPasswordError("");
-     }
+    // Validate Password
+    if (password.length < 8) {
+      setPasswordError('Password needs to be 8 characters or longer!');
+    } else {
+      setPasswordError('');
+    }
 
-     const newUser = { firstName, lastName, email, password, confirmPassword }
-      setUsers([...users, newUser])
-      setFirstName('')
-      setLastName('')
-      setEmail('')
-      setPassword('')
-      setConfirmPassword('')
-      setIsSubmitted(true)
+    // Validate Confirm Password
+    if (confirmPassword !== password) {
+      setConfirmPasswordError('Confirm Password does not match!');
+    } else {
+      setConfirmPasswordError('');
+    }
 
-}
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   const newUser = { firstName, lastName, email, password, confirmPassword }
-  //   setUsers([...users, newUser])
-  //   setFirstName('')
-  //   setLastName('')
-  //   setEmail('')
-  //   setPassword('')
-  //   setConfirmPassword('')
-
-  //   setIsSubmitted(true)
-  // }
+    // Check if all validations pass
+    if (
+      firstName.length >= 2 &&
+      lastName.length >= 2 &&
+      email.length >= 8 &&
+      password.length >= 8 &&
+      confirmPassword === password
+    ) {
+      const newUser = { firstName, lastName, email, password, confirmPassword };
+      setUsers([...users, newUser]);
+      setFirstName('');
+      setLastName('');
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+      setIsSubmitted(true);
+    }
+  };  
 
   return (
     <>
@@ -89,18 +87,23 @@ function App() {
         <div>
           <label>First Name</label>
           <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          {firstError && <p className="error">{firstError}</p>}
         </div>
         <div>
           <label>Last Name</label>
           <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          {lastError && <p className="error">{lastError}</p>}
         </div>
         <div>
           <label>Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {emailError && <p className="error">{emailError}</p>}
         </div>
         <div>
           <label>Password</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {passwordError && <p className="error">{passwordError}</p>}
+          {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
         </div>
         <div>
           <label>Confirm Password</label>
@@ -108,6 +111,18 @@ function App() {
         </div>
         <button >Submit</button>
       </form>
+      <div>
+        <h1>Users</h1>
+        <div>
+          {users.map((user, i) => (
+            <div key={i}>
+              <p>First Name: {user.firstName}</p>
+              <p>Last Name: {user.lastName}</p>
+              <p>Email: {user.email}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
   )
 }

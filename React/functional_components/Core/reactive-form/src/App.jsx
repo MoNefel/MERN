@@ -3,21 +3,33 @@ import './App.css'
 
 function App() {
 
+  // State to hold the list of users
   const [users, setUsers] = useState([])
+
+  // State to hold the first name input value and error message
   const [firstName, setFirstName] = useState('')
   const [firstError, setFirstError] = useState("");
+
+  // State to hold the last name input value and error message
   const [lastName, setLastName] = useState('')
   const [lastError, setLastError] = useState("");
+
+  // State to hold the email input value and error message
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState("");
+
+  // State to hold the password input value and error message
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState("");
+
+  // State to hold the confirm password input value and error message
   const [confirmPassword, setConfirmPassword] = useState('')
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+
+  // State to track if the form is submitted
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-
-
+  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -84,33 +96,41 @@ function App() {
       }
 
       <form onSubmit={handleSubmit}>
+
         <div>
           <label>First Name</label>
           <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           {firstError && <p className="error">{firstError}</p>}
         </div>
+
         <div>
           <label>Last Name</label>
           <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           {lastError && <p className="error">{lastError}</p>}
         </div>
+
         <div>
           <label>Email</label>
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           {emailError && <p className="error">{emailError}</p>}
         </div>
+
         <div>
           <label>Password</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           {passwordError && <p className="error">{passwordError}</p>}
           {confirmPasswordError && <p className="error">{confirmPasswordError}</p>}
         </div>
+
         <div>
           <label>Confirm Password</label>
           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
+
         <button >Submit</button>
+
       </form>
+      
       <div>
         <h1>Users</h1>
         <div>

@@ -12,5 +12,4 @@ const Pizza = ({pizzaObj}) =>{
     )
 }
 
-
 export default Pizza;

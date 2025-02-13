@@ -44,7 +44,7 @@ Currently, two official plugins are available:
 
 # Setting : set Auto Save to onFoucsChange, set Default Formatter to Prettier-Code formatter, add snippets
 
-# List of tasks :
+# ==> List of tasks :
 
 # # Task 1: Create the Basic Structure
 

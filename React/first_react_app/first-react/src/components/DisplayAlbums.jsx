@@ -13,10 +13,15 @@ const DisplayAlbums = (props) => {
     setAlbums(updatedList);
   };
 
+  const handleDelete = (id) => {
+    const updateAlbum = albums.filter((album) => album.id !== id);
+    setAlbums(updateAlbum);
+  };
+
   return (
     <div>
       <h1>Albums</h1>
-      <div className="d-flex border p-3">
+      <div>
         {albums.map((album) => (
           <div key={album.id}>
             <h2>ID : {album.id}</h2>
@@ -34,6 +39,10 @@ const DisplayAlbums = (props) => {
               defaultChecked={album.listened}
               onClick={() => toggleListened(album.id)}
             />
+            <button
+              className="btn btn-danger"
+              onClick={() => handleDelete(album.id)}
+            ></button>
           </div>
         ))}
       </div>
